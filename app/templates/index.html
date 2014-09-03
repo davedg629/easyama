@@ -1,0 +1,17 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+
+    {{super()}}
+
+    {% import "bootstrap/wtf.html" as wtf %}
+    {{ wtf.quick_form(form) }}
+
+{% endblock %}
+
+{% block sidebar %}
+
+    {{super()}}
+    <p>This is the sidebar</p>
+
+{% endblock %}
