@@ -1,7 +1,7 @@
 from flask_wtf import Form
 from wtforms import TextField, SubmitField,\
-    TextAreaField, SelectField, BooleanField
-from wtforms.validators import InputRequired, Length, NoneOf
+    TextAreaField, BooleanField
+from wtforms.validators import InputRequired, Length
 
 
 # frontend thread creation form
@@ -38,5 +38,5 @@ class ThreadForm(Form):
         ]
     )
 
-    test_mode = BooleanField('Don\'t post to reddit?')
+    test_mode = BooleanField('Test mode?')
     submit = SubmitField()
