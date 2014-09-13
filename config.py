@@ -54,3 +54,25 @@ if os.environ.get('FAVICON_URL') is None:
     FAVICON_URL = 'favicon_url_here'
 else:
     FAVICON_URL = os.environ.get('FAVICON_URL')
+
+# reddit
+if os.environ.get('REDDIT_USER_AGENT') is None:
+    REDDIT_USER_AGENT = "your app name ver 0.1 by /u/your_user_name, "\
+        "https://github.com/davedg629/amapro_v1"
+else:
+    REDDIT_USER_AGENT = os.environ.get('REDDIT_USER_AGENT')
+
+if os.environ.get('REDDIT_APP_ID') is None:
+    REDDIT_APP_ID = 'reddit_app_id'
+else:
+    REDDIT_APP_ID = os.environ.get('REDDIT_APP_ID')
+
+if os.environ.get('REDDIT_APP_SECRET') is None:
+    REDDIT_APP_SECRET = 'reddit_app_secret'
+else:
+    REDDIT_APP_SECRET = os.environ.get('REDDIT_APP_SECRET')
+
+if os.environ.get('OAUTH_REDIRECT_URI') is None:
+    OAUTH_REDIRECT_URI = 'http://localhost:5000/authorize'
+else:
+    OAUTH_REDIRECT_URI = os.environ.get('OAUTH_REDIRECT_URI')

@@ -3,6 +3,39 @@ from flask import flash, redirect, render_template, request, \
     session, url_for, abort, Markup, g
 from app.forms import ThreadForm
 from app.models import Thread
+from flask.ext.login import login_user, logout_user, \
+    login_required, current_user
+from app.utils import generate_token
+import praw
+
+
+@app.before_request
+def before_request():
+    if current_user.is_authenticated():
+        g.user = current_user
+    else:
+        g.user = None
+
+
+# REDDIT LOGIN
+@app.route('/login/')
+def login():
+    if current_user.is_anonymous():
+        session['oauth_token'] = generate_token()
+        oauth_link = r.get_authorize_url(
+            session['oauth_token'],
+            ['identity', 'submit', 'edit'],
+            True
+        )
+        return render_template(
+            'login.html',
+            title="Reddit Login",
+            page_title="Reddit Login",
+            oauth_link=oauth_link
+        )
+    else:
+        flash('You are already logged in!')
+        return redirect(url_for('dashboard'))
 
 
 @app.route("/", methods=['GET', 'POST'])
