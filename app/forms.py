@@ -1,7 +1,7 @@
 from flask_wtf import Form
 from wtforms import TextField, SubmitField,\
     TextAreaField, BooleanField
-from wtforms.validators import InputRequired, Length
+from wtforms.validators import InputRequired, Length, URL
 
 
 # frontend thread creation form
@@ -25,8 +25,8 @@ class ThreadForm(Form):
         validators=[
             InputRequired(),
             Length(
-                max=600,
-                message="Description cannot be longer than 600 characters"
+                max=2500,
+                message="Description cannot be longer than 2500 characters"
             )
         ]
     )
@@ -34,9 +34,9 @@ class ThreadForm(Form):
     verification = TextField(
         'Provide a link that verifies your identity:',
         validators=[
-            InputRequired()
+            InputRequired(),
+            URL(require_tld=True)
         ]
     )
 
-    test_mode = BooleanField('Test mode?')
     submit = SubmitField()

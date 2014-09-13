@@ -1,0 +1,15 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+
+    {{super()}}
+
+    <p><strong>Subreddit:</strong> {{ thread.subreddit }}</p>
+
+    <p><strong>Title:</strong> {{ thread.title }}</p>
+
+    <p><strong>Body:</strong></p>
+    
+    <p>{{ thread.body }}<br /><br />Verification link: <a href="{{ thread.verification }}" target="_blank">{{ thread.verification }}</a></p>
+
+{% endblock %}

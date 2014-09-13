@@ -1,6 +1,5 @@
 from app import db
 from datetime import datetime
-from app.utils import make_slug
 
 
 class Role(db.Model):
@@ -56,20 +55,12 @@ class Thread(db.Model):
     title = db.Column(db.String, nullable=False)
     body = db.Column(db.String, nullable=False)
     verification = db.Column(db.String, nullable=False)
-
-    def get_slug(context):
-        return make_slug(context.current_parameters['title'])
-
-    slug = db.Column(
-        db.String,
-        nullable=False,
-        default=get_slug
-    )
+    subreddit = db.Column(db.String, nullable=False)
 
     reddit_id = db.Column(db.String)
     reddit_permalink = db.Column(db.String)
-    subreddit = db.Column(db.String, nullable=False)
     score = db.Column(db.Integer, nullable=False, default=1)
+
     date_posted = db.Column(
         db.DateTime,
         default=datetime.utcnow(),
