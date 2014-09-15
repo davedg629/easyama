@@ -39,4 +39,4 @@ class ThreadForm(Form):
         ]
     )
 
-    submit = SubmitField()
+    submit = SubmitField('Preview')

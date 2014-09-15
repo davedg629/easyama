@@ -4,12 +4,20 @@
 
     {{super()}}
 
-    <p><strong>Subreddit:</strong> {{ thread.subreddit }}</p>
+    <p><strong>This AMA will be submitted to:</strong> r/{{ thread.subreddit }}</p>
 
-    <p><strong>Title:</strong> {{ thread.title }}</p>
-
-    <p><strong>Body:</strong></p>
+    <p><strong>AMA Title:</strong></p>
     
-    <p>{{ thread.body }}<br /><br />Verification link: <a href="{{ thread.verification }}" target="_blank">{{ thread.verification }}</a></p>
+    <p>{{ thread.title }}</p>
+
+    <p><strong>AMA Body:</strong></p>
+    
+    <p>{{ thread.body }}<br /><br />Verification: <a href="{{ thread.verification }}" target="_blank">{{ thread.verification }}</a></p>
+
+    <hr />
+
+    <p>Want to change something? <a class="btn" href="#">Edit the AMA</a></p>
+
+    <p>Does everything look good? <a class="btn" href="#">Submit the AMA</a></p>
 
 {% endblock %}
