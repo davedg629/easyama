@@ -63,6 +63,8 @@ class Thread(db.Model):
     verification = db.Column(db.String, nullable=False)
     subreddit = db.Column(db.String, nullable=False)
 
+    submitted = db.Column(db.Boolean, nullable=False, default=False)
+
     reddit_id = db.Column(db.String)
     reddit_permalink = db.Column(db.String)
     score = db.Column(db.Integer, nullable=False, default=1)

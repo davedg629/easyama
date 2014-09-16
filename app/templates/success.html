@@ -1,0 +1,18 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+
+    {{super()}}
+
+    <p><a href="{{ thread.reddit_permalink }}">Click here to view your AMA on reddit</a></p>
+
+    <p>More information and tips here.</p>
+
+{% endblock %}
+
+{% block sidebar %}
+
+    {{super()}}
+    <p>This is the sidebar</p>
+
+{% endblock %}

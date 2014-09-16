@@ -16,8 +16,8 @@
 
     <hr />
 
-    <p>Want to change something? <a class="btn" href="#">Edit the AMA</a></p>
+    <p>Want to change something? <a class="btn" href="{{ url_for('edit', thread_id=thread.id) }}">Edit the AMA</a></p>
 
-    <p>Does everything look good? <a class="btn" href="#">Submit the AMA</a></p>
+    <p>Does everything look good? <a class="btn" href="{{ url_for('success', thread_id=thread.id) }}">Submit the AMA</a></p>
 
 {% endblock %}
