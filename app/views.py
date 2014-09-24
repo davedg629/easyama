@@ -112,11 +112,10 @@ def preview(thread_id):
             page_title="Preview Your AMA"
         )
     elif thread.submitted is True:
-        return render_template(
-            'success.html',
-            thread=thread,
-            page_title="Your AMA has been submitted!"
-        )
+        return redirect(url_for(
+            'success',
+            thread_id=thread.id
+        ))
     else:
         abort(404)
 
@@ -145,11 +144,10 @@ def edit(thread_id):
             page_title="Edit Your AMA"
         )
     elif thread.submitted is True:
-        return render_template(
-            'success.html',
-            thread=thread,
-            page_title="Your AMA has been submitted!"
-        )
+        return redirect(url_for(
+            'success',
+            thread_id=thread.id
+        ))
     else:
         abort(404)
 
@@ -161,6 +159,7 @@ def success(thread_id):
         .filter_by(id=thread_id)\
         .first()
     if thread and thread.user_id is g.user.id:
+
         if thread.submitted is False:
 
             # post to reddit
@@ -177,25 +176,6 @@ def success(thread_id):
                     )
                 )
 
-                if reddit_post:
-                    thread.submitted = True
-                    thread.reddit_id = reddit_post.id
-                    thread.reddit_permalink = reddit_post.permalink
-                    db.session.commit()
-                    return render_template(
-                        'success.html',
-                        thread=thread,
-                        page_title="Your AMA has been submitted!"
-                    )
-
-                else:
-                    flash('Sorry, we could not create '
-                          'your AMA on reddit. Try again.')
-                    return redirect(url_for(
-                        'preview',
-                        thread_id=thread.id
-                    ))
-
             except praw.errors.APIException as e:
                 flash('There was an error with your AMA submission: ' +
                       e.message)
@@ -206,12 +186,25 @@ def success(thread_id):
 
             except:
                 flash('Sorry, we could not create '
-                      'your AMA on reddit. Try again.')
+                      'your AMA on reddit 2. Try again.')
 
-            return redirect(url_for(
-                'preview',
-                thread_id=thread.id
-            ))
+            if reddit_post:
+                thread.submitted = True
+                thread.reddit_id = reddit_post.id
+                thread.reddit_permalink = reddit_post.permalink
+                db.session.commit()
+                return render_template(
+                    'success.html',
+                    thread=thread,
+                    page_title="Your AMA has been submitted!"
+                )
+
+            else:
+                return redirect(url_for(
+                    'preview',
+                    thread_id=thread.id
+                ))
+
         else:
 
             return render_template(
