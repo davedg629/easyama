@@ -109,7 +109,7 @@ def preview(thread_id):
         return render_template(
             'preview.html',
             thread=thread,
-            page_title="Preview and Submit Your AMA"
+            page_title="Step 3: Preview and Submit Your AMA"
         )
     elif thread.submitted is True:
         return redirect(url_for(
