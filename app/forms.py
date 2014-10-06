@@ -7,10 +7,10 @@ from wtforms.validators import InputRequired, Length, URL
 # frontend thread creation form
 class ThreadForm(Form):
 
-    subreddit = TextField('Choose a Subreddit:', validators=[InputRequired()])
+    subreddit = TextField('Subreddit', validators=[InputRequired()])
 
     title = TextField(
-        'Enter a title for your reddit AMA:',
+        'Title',
         validators=[
             InputRequired(),
             Length(
@@ -21,7 +21,7 @@ class ThreadForm(Form):
     )
 
     body = TextAreaField(
-        'Provide details about who you are and why you are doing this AMA:',
+        'Body',
         validators=[
             InputRequired(),
             Length(
@@ -32,7 +32,7 @@ class ThreadForm(Form):
     )
 
     verification = TextField(
-        'Provide a link that verifies your identity:',
+        'Verification Link',
         validators=[
             InputRequired(),
             URL(require_tld=True)

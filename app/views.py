@@ -82,7 +82,7 @@ def index():
 
         return render_template(
             'index.html',
-            page_title="Start Your reddit AMA",
+            page_title="Step 2: Create your reddit AMA",
             form=form
         )
     else:
@@ -94,7 +94,7 @@ def index():
         )
         return render_template(
             'index-anon.html',
-            page_title="Start Your reddit AMA",
+            page_title="Step 1: Login to your reddit account",
             oauth_link=oauth_link
         )
 
@@ -109,7 +109,7 @@ def preview(thread_id):
         return render_template(
             'preview.html',
             thread=thread,
-            page_title="Preview Your AMA"
+            page_title="Preview and Submit Your AMA"
         )
     elif thread.submitted is True:
         return redirect(url_for(

@@ -4,20 +4,18 @@
 
     {{super()}}
 
-    <p><strong>This AMA will be submitted to:</strong> r/{{ thread.subreddit }}</p>
+    <p><strong>Subreddit:</strong> r/{{ thread.subreddit }}</p>
 
-    <p><strong>AMA Title:</strong></p>
+    <p><strong>Title:</strong> {{ thread.title }}</p>
     
-    <p>{{ thread.title }}</p>
-
-    <p><strong>AMA Body:</strong></p>
+    <p><strong>Body:</strong></p>
     
     <p>{{ thread.body }}<br /><br />Verification: <a href="{{ thread.verification }}" target="_blank">{{ thread.verification }}</a></p>
 
     <hr />
 
-    <p>Want to change something? <a class="btn" href="{{ url_for('edit', thread_id=thread.id) }}">Edit the AMA</a></p>
+    <p><strong>Notice:</strong> Make sure you have proofread your AMA copy before submitting. You can edit the body of your AMA after submitting, but not the title.</p>
 
-    <p>Does everything look good? <a class="btn" href="{{ url_for('success', thread_id=thread.id) }}">Submit the AMA</a></p>
+    <p><a class="btn btn-default" href="{{ url_for('edit', thread_id=thread.id) }}">Edit Your AMA</a> <a class="btn btn-primary" href="{{ url_for('success', thread_id=thread.id) }}">Submit Your AMA</a></p>
 
 {% endblock %}

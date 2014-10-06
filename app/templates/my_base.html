@@ -69,18 +69,13 @@
 
     <div class="row">
 
-        <div id="main" class="col-sm-8"> 
+        <div id="main" class="col-sm-12"> 
         {% block page_content %}
 
             {% if page_title %}
             <div class="page-header"><h2>{{ page_title }}</h2></div>
             {% endif %}
 
-        {% endblock %}
-        </div>
-
-        <div id="sidebar" class="col-sm-4">
-        {% block sidebar %}
         {% endblock %}
         </div>
 

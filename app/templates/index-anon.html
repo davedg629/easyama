@@ -4,17 +4,10 @@
 
     {{super()}}
 
-    <p>Welcome to AMApro, the easy way to create a successful AMA on reddit.</p>
-
     <p>Before you can begin, login with your reddit account by clicking the button below. If you don't have a reddit account, you can create one <a href="http://www.reddit.com/register" target="_blank">here</a>.</p>
 
-    <p><strong><a id="login-reddit" href="{{ oauth_link }}">Login with your reddit account</a></strong></p>
+    <p><strong>After clicking the button below, you will be taken to reddit.com to authorize your account. We will not have access to your reddit password during this process.</strong></p>
 
-{% endblock %}
-
-{% block sidebar %}
-
-    {{super()}}
-    <p>This is the sidebar</p>
+    <p><a id="login-reddit" href="{{ oauth_link }}"></a></p>
 
 {% endblock %}
