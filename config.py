@@ -10,6 +10,7 @@ if os.environ.get('ENVIRONMENT') is None:
     ENVIRONMENT = 'dev'
 else:
     ENVIRONMENT = os.environ.get('ENVIRONMENT')
+    DEBUG = False
 
 # server name
 if os.environ.get('SERVER_NAME') is None:
