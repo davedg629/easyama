@@ -1,4 +1,8 @@
+.navbar > .container .navbar-brand {background: transparent url(http://groupsrc.com/easyama/logo_easyama.png) no-repeat center top; display: block; height: 50px; margin: 12px 0; padding: 0; width: 200px;}
+
 #footer {background-color: #F4F4F4; font-size: 12px; margin: 20px 0 0 0; padding: 18px 0 8px; text-align: center;}
 
 a#login-reddit {background: transparent url(http://groupsrc.com/redditratings/login_reddit.png) no-repeat center top; display: block; height: 75px; width: 270px;}
 a#login-reddit:hover {background-position: center bottom;}
+
+.page-header {margin-top: 10px;}
