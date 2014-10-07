@@ -37,3 +37,6 @@ form textarea.form-control {height: 150px;}
 .flask-pagedown-preview {font-family: verdana,arial,helvetica,sans-serif; font-size: small; margin: 10px 0; background-color: #fafafa; border: 1px solid #369; border-radius: 7px; -webkit-border-radius: 7px; font-size: small; padding: 0 5px;}
 .flask-pagedown-preview p {margin: 5px 0;}
 .flask-pagedown-preview a {color: #369;}
+
+/* --- modal windows --- */
+.modal-title {font-weight: bold;}
