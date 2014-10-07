@@ -12,7 +12,7 @@
 
         <div class="md">
             
-            <p>{{ thread.body }}</p>
+            {{ thread.body|markdown }}
             
             <p><strong>Verification:</strong> <a href="{{ thread.verification }}" target="_blank">{{ thread.verification }}</a></p>
         
