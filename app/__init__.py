@@ -3,6 +3,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.bootstrap import Bootstrap
 from flask.ext.script import Manager
 from flask.ext.login import LoginManager
+from flask.ext.pagedown import PageDown
 import praw
 
 app = Flask(__name__)
@@ -13,6 +14,7 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'index'
 bootstrap = Bootstrap(app)
 manager = Manager(app)
+pagedown = PageDown(app)
 
 r = praw.Reddit(user_agent=app.config['REDDIT_USER_AGENT'])
 r.set_oauth_app_info(
