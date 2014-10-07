@@ -2,6 +2,7 @@ from flask_wtf import Form
 from wtforms import TextField, SubmitField,\
     TextAreaField, BooleanField
 from wtforms.validators import InputRequired, Length, URL
+from flask.ext.pagedown.fields import PageDownField
 
 
 # frontend thread creation form
@@ -20,7 +21,7 @@ class ThreadForm(Form):
         ]
     )
 
-    body = TextAreaField(
+    body = PageDownField(
         'Body',
         validators=[
             InputRequired(),

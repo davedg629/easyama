@@ -19,8 +19,9 @@
       href="{{ config['FAVICON_URL'] }}" />
 {% endif %}
 
-{{google.uanalytics(id=config['GA_TRACKING_ID'],
-                    domain=config['GA_DEFAULT_URL'])}}
+{{google.uanalytics(id=config['GA_TRACKING_ID'], domain=config['GA_DEFAULT_URL'])}}
+
+{{ pagedown.html_head() }}
 
 {% endblock %}
 
