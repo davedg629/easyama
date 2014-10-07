@@ -4,15 +4,21 @@
 
     {{super()}}
 
-    <p><strong>Subreddit:</strong> r/{{ thread.subreddit }}</p>
+    <p>Your AMA will be submitted to <strong>r/{{ thread.subreddit }}</strong> and will look like this:</p>
 
-    <p><strong>Title:</strong> {{ thread.title }}</p>
-    
-    <p><strong>Body:</strong></p>
-    
-    <p>{{ thread.body }}<br /><br />Verification: <a href="{{ thread.verification }}" target="_blank">{{ thread.verification }}</a></p>
+    <div class="reddit-preview">
+        
+        <p class="title">{{ thread.title }}</p>
 
-    <hr />
+        <div class="md">
+            
+            <p>{{ thread.body }}</p>
+            
+            <p><strong>Verification:</strong> <a href="{{ thread.verification }}" target="_blank">{{ thread.verification }}</a></p>
+        
+        </div>
+
+    </div>
 
     <p><strong>Notice:</strong> Make sure you have proofread your AMA copy before submitting. You can edit the body of your AMA after submitting, but not the title.</p>
 
