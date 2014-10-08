@@ -41,7 +41,7 @@
     <div class="form-group{% if form.verification.errors %} has-error{% endif %}">
         {{ form.verification.label(class="control-label") }}
         <span class="help-block">Every AMA must be verified. You can verify your AMA by making a post on your official website or social media accounts that includes your reddit username. Include a picture of yourslef holding up a "Hi reddit" sign for bonus points. Enter the full URL to your verification in this field. <a href="#" data-toggle="modal" data-target="#helpVerification"><img src="http://groupsrc.com/easyama/icon_question.png" alt="Need help?" /></a></span>
-        {{ form.verification(class="form-control") }}
+        {{ form.verification(class="form-control", placeholder="Must start with http:// or https://") }}
         {% if form.verification.errors %}
             <ul class="errors">{% for error in form.verification.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
         {% endif %}
