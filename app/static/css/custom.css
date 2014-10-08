@@ -15,7 +15,8 @@ a#login-reddit:hover {background-position: center bottom;}
 .page-header {margin-top: 10px;}
 
 /* --- form --- */
-form label.control-label {font-weight: bold;}
+form .form-group {margin-bottom: 24px;}
+form label.control-label {font-size: 19px; font-weight: bold; margin-bottom: 0;}
 form .has-error label.control-label {color: #b94a48;}
 form ul.errors {display: block; margin: 8px 0; padding: 0;}
 form ul.errors li {display: block; list-style-type: none; margin: 0 0 6px; padding: 0;}
