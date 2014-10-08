@@ -1,0 +1,42 @@
+body {font-size: 15px;}
+
+.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {margin: 0;}
+
+.navbar > .container .navbar-brand {background: transparent url(http://groupsrc.com/easyama/logo_easyama.png) no-repeat center top; display: block; height: 50px; margin: 11px 0 13px; padding: 0; width: 200px;}
+
+#footer {background-color: #F4F4F4; font-size: 12px; margin: 20px 0 0 0; padding: 18px 0 8px; text-align: center;}
+
+a#login-reddit {background: transparent url(http://groupsrc.com/redditratings/login_reddit.png) no-repeat center top; display: block; height: 75px; width: 270px;
+transition: none;
+-webkit-transition: none;
+}
+a#login-reddit:hover {background-position: center bottom;}
+
+.page-header {margin-top: 10px;}
+
+/* --- form --- */
+form label.control-label {font-weight: bold;}
+form .has-error label.control-label {color: #b94a48;}
+form ul.errors {display: block; margin: 8px 0; padding: 0;}
+form ul.errors li {display: block; list-style-type: none; margin: 0 0 6px; padding: 0;}
+
+.has-error .help-block {color: #444444;}
+
+.has-error .form-control, .has-error .form-control:focus {border-color: #b94a48;}
+
+form textarea.form-control {height: 150px;}
+
+/* --- reddit preview --- */
+.reddit-preview {font-family: verdana,arial,helvetica,sans-serif; margin: 0 0 20px;}
+.reddit-preview p.title {color: blue; font-size: medium;}
+.reddit-preview .md {background-color: #fafafa; border: 1px solid #369; border-radius: 7px; -webkit-border-radius: 7px; font-size: small; padding: 0 5px;}
+.reddit-preview .md p {margin: 5px 0;}
+.reddit-preview .md a {color: #369;}
+
+/* --- markdown/reddit preview on create/edit forms --- */
+.flask-pagedown-preview {font-family: verdana,arial,helvetica,sans-serif; font-size: small; margin: 10px 0; background-color: #fafafa; border: 1px solid #369; border-radius: 7px; -webkit-border-radius: 7px; font-size: small; padding: 0 5px;}
+.flask-pagedown-preview p {margin: 5px 0;}
+.flask-pagedown-preview a {color: #369;}
+
+/* --- modal windows --- */
+.modal-title {font-weight: bold;}

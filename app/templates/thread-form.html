@@ -1,0 +1,110 @@
+<form method="post" class="form" role="form">
+    
+    {{ form.csrf_token }}
+
+    <div class="form-group{% if form.subreddit.errors %} has-error{% endif %}">
+        {{ form.subreddit.label(class="control-label") }}
+        <span class="help-block">Choose a subreddit to hold your AMA. Do not prepend it with "/r/". <a href="#" data-toggle="modal" data-target="#helpSubreddit">Need help choosing a subreddit?</a></span>
+        <div class="input-group">
+            <span class="input-group-addon">/r/</span>
+            {{ form.subreddit(class="form-control") }}
+        </div>
+        {% if form.subreddit.errors %}
+            <ul class="errors">{% for error in form.subreddit.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
+        {% endif %}
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="form-group{% if form.title.errors %} has-error{% endif %}">
+        {{ form.title.label(class="control-label") }}
+        <p><span class="help-block">The title of your AMA should include your name, your reason for doing the AMA, and the words "Ask Me Anything" (or "AMA"). <a href="#" data-toggle="modal" data-target="#helpTitle">Need help writing your AMA title?</a></span></p>
+        {{ form.title(class="form-control") }}
+        {% if form.title.errors %}
+            <ul class="errors">{% for error in form.title.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
+        {% endif %}
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="form-group{% if form.body.errors %} has-error{% endif %}">
+        {{ form.body.label(class="control-label") }}
+        <span class="help-block">The body of your AMA is where you get to tell the audience more about yourself, why you are doing the AMA and what you are promoting. Use <a href="http://www.reddit.com/wiki/commenting#wiki_posting" target="_blank">reddit markdown</a> to format your post. <a href="#" data-toggle="modal" data-target="#helpBody">Need help writing your AMA body?</a></span>
+        {{ form.body(class="form-control") }}
+        {% if form.body.errors %}
+            <ul class="errors">{% for error in form.body.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
+        {% endif %}
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="form-group{% if form.verification.errors %} has-error{% endif %}">
+        {{ form.verification.label(class="control-label") }}
+        <span class="help-block">Every AMA must be verified. You can verify your AMA by making a post on your official website or social media accounts that includes your reddit username. Include a picture of yourslef holding up a "Hi reddit" sign for bonus points. Enter the full URL to your verification in this field. <a href="#" data-toggle="modal" data-target="#helpVerification">Need help verifying your AMA?</a></span>
+        {{ form.verification(class="form-control") }}
+        {% if form.verification.errors %}
+            <ul class="errors">{% for error in form.verification.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
+        {% endif %}
+    </div>
+
+    <div class="divider"></div>
+
+    <input class="btn btn-primary" id="submit" name="submit" type="submit" value="Preview">
+
+</form>
+
+<div class="modal fade" id="helpSubreddit" tabindex="-1" role="dialog" aria-labelledby="helpSubredditLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Choosing a subreddit</h4>
+      </div>
+      <div class="modal-body">
+        Help with choosing a subreddit.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="helpTitle" tabindex="-1" role="dialog" aria-labelledby="helpTitleLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Writing a great title</h4>
+      </div>
+      <div class="modal-body">
+        Help writing your AMA title.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="helpBody" tabindex="-1" role="dialog" aria-labelledby="helpBodyLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Writing the body</h4>
+      </div>
+      <div class="modal-body">
+        Help writing the AMA body.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="helpVerification" tabindex="-1" role="dialog" aria-labelledby="helpVerificationLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Creating a verification link</h4>
+      </div>
+      <div class="modal-body">
+        Help creating your verificaiton link.
+      </div>
+    </div>
+  </div>
+</div>

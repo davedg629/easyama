@@ -1,0 +1,27 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+
+    {{super()}}
+
+    <p>Your AMA will be submitted to <strong>r/{{ thread.subreddit }}</strong> and will look like this:</p>
+
+    <div class="reddit-preview">
+        
+        <p class="title">{{ thread.title }}</p>
+
+        <div class="md">
+            
+            {{ thread.body|markdown }}
+            
+            <p><strong>Verification:</strong> <a href="{{ thread.verification }}" target="_blank">{{ thread.verification }}</a></p>
+        
+        </div>
+
+    </div>
+
+    <p><strong>Notice:</strong> Make sure you have proofread your AMA copy before submitting. You can edit the body of your AMA after submitting, but not the title.</p>
+
+    <p><a class="btn btn-default" href="{{ url_for('edit', thread_id=thread.id) }}">Edit Your AMA</a> <a class="btn btn-primary" href="{{ url_for('success', thread_id=thread.id) }}">Submit Your AMA</a></p>
+
+{% endblock %}
