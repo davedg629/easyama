@@ -186,9 +186,9 @@ def success(thread_id):
 
             except:
                 flash('Sorry, we could not create '
-                      'your AMA on reddit 2. Try again.')
+                      'your AMA on reddit. Please try again.')
 
-            if reddit_post:
+            if reddit_post is not None:
                 thread.submitted = True
                 thread.reddit_id = reddit_post.id
                 thread.reddit_permalink = reddit_post.permalink
