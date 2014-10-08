@@ -4,10 +4,10 @@
 
     {{super()}}
 
-    <p>Before you can begin, login with your reddit account by clicking the button below. If you don't have a reddit account, you can create one <a href="http://www.reddit.com/register" target="_blank">here</a>.</p>
+    <p>Before you can submit an AMA, login with your reddit account by clicking the button below. If you don't have a reddit account, you can create one <a href="http://www.reddit.com/register" target="_blank">here</a>.</p>
 
-    <p><strong>After clicking the button below, you will be taken to reddit.com to authorize your account. We will not have access to your reddit password during this process.</strong></p>
+    <p><a id="login-reddit" href="{{ oauth_link }}"><img src="http://groupsrc.com/easyama/login_reddit.jpg" alt="Authorize with reddit" /></a></p>
 
-    <p><a id="login-reddit" href="{{ oauth_link }}"></a></p>
+    <p class="small"><strong>The button above will authorize EasyAMA to post to reddit on your behalf. We will not have access to your reddit password during this process and we will never post to reddit without your directive.</strong></p>
 
 {% endblock %}
