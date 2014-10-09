@@ -4,7 +4,7 @@ body {font-size: 15px;}
 
 .container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {margin: 0;}
 
-.navbar > .container .navbar-brand {background: transparent url(http://groupsrc.com/easyama/logo_easyama.png) no-repeat center top; display: block; height: 50px; margin: 11px 0 13px; padding: 0; width: 200px;}
+.navbar > .container .navbar-brand {background: transparent url(http://groupsrc.com/easyama/logo_easyama.png) no-repeat center top; display: block; height: 50px; margin: 11px 0 6px; padding: 0; width: 171px;}
 
 #footer {background-color: #F4F4F4; font-size: 12px; margin: 20px 0 0 0; padding: 18px 0 8px; text-align: center;}
 
