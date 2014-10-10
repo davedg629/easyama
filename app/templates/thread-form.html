@@ -7,7 +7,7 @@
         <span class="help-block">Choose a subreddit for your AMA. Do not prepend it with "/r/". &nbsp;<a href="#" data-toggle="modal" data-target="#helpSubreddit"><img src="http://groupsrc.com/easyama/icon_question.png" alt="Need help?" /></a></span>
         <div class="input-group">
             <span class="input-group-addon">/r/</span>
-            {{ form.subreddit(class="form-control") }}
+            {{ form.subreddit(class="form-control", tabindex="1") }}
         </div>
         {% if form.subreddit.errors %}
             <ul class="errors">{% for error in form.subreddit.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
@@ -19,7 +19,7 @@
     <div class="form-group{% if form.title.errors %} has-error{% endif %}">
         {{ form.title.label(class="control-label") }}
         <p><span class="help-block">The title of your AMA should include your name, your reason for doing the AMA, and the words "Ask Me Anything" (or "AMA"). &nbsp;<a href="#" data-toggle="modal" data-target="#helpTitle"><img src="http://groupsrc.com/easyama/icon_question.png" alt="Need help?" /></a></span></p>
-        {{ form.title(class="form-control") }}
+        {{ form.title(class="form-control", tabindex="2") }}
         {% if form.title.errors %}
             <ul class="errors">{% for error in form.title.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
         {% endif %}
@@ -30,7 +30,7 @@
     <div class="form-group{% if form.body.errors %} has-error{% endif %}">
         {{ form.body.label(class="control-label") }}
         <span class="help-block">The body of your AMA is where you get to tell the audience more about yourself, why you are doing the AMA and what you are promoting. Use <a href="http://www.reddit.com/wiki/commenting#wiki_posting" target="_blank">reddit markdown</a> to format your post. &nbsp;<a href="#" data-toggle="modal" data-target="#helpBody"><img src="http://groupsrc.com/easyama/icon_question.png" alt="Need help?" /></a></span>
-        {{ form.body(class="form-control") }}
+        {{ form.body(class="form-control", tabindex="3") }}
         {% if form.body.errors %}
             <ul class="errors">{% for error in form.body.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
         {% endif %}
@@ -41,7 +41,7 @@
     <div class="form-group{% if form.verification.errors %} has-error{% endif %}">
         {{ form.verification.label(class="control-label") }}
         <span class="help-block">Include a verification link in the box below to prove your identity. Enter the full URL to your verification in the field below. &nbsp;<a href="#" data-toggle="modal" data-target="#helpVerification"><img src="http://groupsrc.com/easyama/icon_question.png" alt="Need help?" /></a></span>
-        {{ form.verification(class="form-control", placeholder="Must start with http:// or https://") }}
+        {{ form.verification(class="form-control", placeholder="Must start with http:// or https://", tabindex="4") }}
         {% if form.verification.errors %}
             <ul class="errors">{% for error in form.verification.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
         {% endif %}
