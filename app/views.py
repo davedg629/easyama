@@ -37,6 +37,11 @@ def internal_error(error):
     ), 500
 
 
+@app.route('/test/')
+def test():
+    return abort(500)
+
+
 # REDDIT LOGIN
 @app.route('/authorize/')
 def authorize():
