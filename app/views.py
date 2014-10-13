@@ -18,9 +18,9 @@ def before_request():
         g.user = None
 
 
-@app.route('/test/')
+@app.route('/admin/')
 @admin_login_required
-def test():
+def admin():
     return 'hello world'
 
 
