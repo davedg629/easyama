@@ -18,12 +18,6 @@ def before_request():
         g.user = None
 
 
-@app.route('/admin/')
-@admin_login_required
-def admin():
-    return 'hello world'
-
-
 # REDDIT LOGIN
 @app.route('/authorize/')
 def authorize():

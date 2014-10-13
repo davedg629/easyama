@@ -25,4 +25,6 @@ r.set_oauth_app_info(
     app.config['OAUTH_REDIRECT_URI']
 )
 
-from app import models, views
+from app import models, views, admin_views
+from admin_views import admin
+admin.init_app(app)
