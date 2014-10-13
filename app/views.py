@@ -6,7 +6,6 @@ from app.models import Thread, User
 from flask.ext.login import login_user, logout_user, \
     login_required, current_user
 from app.utils import generate_token, reddit_body
-from app.decorators import admin_login_required
 import praw
 
 
@@ -16,6 +15,26 @@ def before_request():
         g.user = current_user
     else:
         g.user = None
+
+
+# ERROR HANDLERS
+@app.errorhandler(404)
+def page_not_found_error(error):
+    return render_template(
+        '404.html',
+        title="Page Not Found",
+        page_title="Page Not Found"
+    ), 404
+
+
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return render_template(
+        '500.html',
+        title="Error",
+        page_title="Error!"
+    ), 500
 
 
 # REDDIT LOGIN
