@@ -32,7 +32,7 @@ else:
 
 # SQLALchemy database URI
 if os.environ.get('DATABASE_URL') is None:
-    DATABASE = 'amapro.db'
+    DATABASE = 'easyama.db'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
         os.path.join(basedir, DATABASE) + \
         '?check_same_thread=False'

@@ -6,6 +6,7 @@ from app.models import Thread, User
 from flask.ext.login import login_user, logout_user, \
     login_required, current_user
 from app.utils import generate_token, reddit_body
+from app.decorators import admin_login_required
 import praw
 
 
@@ -15,6 +16,12 @@ def before_request():
         g.user = current_user
     else:
         g.user = None
+
+
+@app.route('/test/')
+@admin_login_required
+def test():
+    return 'hello world'
 
 
 # REDDIT LOGIN
