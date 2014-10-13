@@ -4,15 +4,26 @@
 
     {{super()}}
 
-    <p><a href="{{ thread.reddit_permalink }}" target="_blank">Click here to view your AMA on reddit</a></p>
+    <p><a href="{{ thread.reddit_permalink }}?sort=new" target="_blank">Click here to view your AMA on reddit</a></p>
 
-    <p>More information and tips here.</p>
+    <p>Now that you have submitted your AMA, you need to monitor the AMA and respond to as many questions as possible. Click on the above link to open your AMA. Questions will be listed newest to oldest.</p>
 
-{% endblock %}
+    <p>We suggest that you refresh your AMA every 10 minutes or so or whenever you have answered all questions. You should dedicate 1 to 2 hours to answering questions. Return to the thread after 24 hours to answer any questions that were posted.</p>
 
-{% block sidebar %}
+    <hr />
 
-    {{super()}}
-    <p>This is the sidebar</p>
+    <h3>Share your AMA</h3>
+
+    <p>It is always a good idea ot let your fans know that you are doing an AMA. Click the buttons below to share your AMA on your various social media platforms.</p>
+
+    <ul>
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ thread.reddit_permalink }}" target="_blank">Share on Facebook</a></li>
+        <li><a href="https://twitter.com/home?status=I%20just%20started%20a%20reddit%20AMA%20in%20r/{{ thread.subreddit }},%20ask%20me%20a%20question! {{ thread.reddit_permalink }}" target="_blank">Share on Twitter</a></li>
+        <li><a href="https://plus.google.com/share?url={{ thread.subreddit }}" target="_blank">Share on Google Plus</a></li>
+    </ul>
+
+    <hr />
+
+    <p>Thanks for using the EasyAMA app. If you need any help with this AMA or engaging other reddit communities in the future, <a href="http://groupsrc.com/contact" >send us a note</a>.</p>
 
 {% endblock %}
