@@ -26,7 +26,41 @@ class MyAdminIndexView(AuthMixin, AdminIndexView):
 class AdminModelView(AuthMixin, ModelView):
     pass
 
+
+class RoleView(AdminModelView):
+    pass
+
+
+class UserView(AdminModelView):
+    pass
+
+
+class ThreadView(AdminModelView):
+    form_excluded_columns = ('score')
+
+
+# Admin constructor
 admin = Admin(
     name='EasyAMA',
     index_view=MyAdminIndexView()
 )
+
+# add admin views
+admin.add_view(RoleView(
+    models.Role,
+    db.session,
+    name='Roles',
+    endpoint='role_model_view'
+))
+admin.add_view(UserView(
+    models.User,
+    db.session,
+    name='Users',
+    endpoint='user_model_view'
+))
+admin.add_view(ThreadView(
+    models.Thread,
+    db.session,
+    name='Threads',
+    endpoint='thread_model_view'
+))
