@@ -1,0 +1,13 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+
+    {{super()}}
+
+    {% for thread in threads %}
+    <div class="list-item{% if loop.last %} last{% endif %}">
+        <h3>{{ thread.title }}</h3>
+    </div>
+    {% endfor %}
+
+{% endblock %}

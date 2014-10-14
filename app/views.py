@@ -80,6 +80,7 @@ def logout():
     return redirect(url_for('index'))
 
 
+# homepage
 @app.route("/", methods=['GET', 'POST'])
 def index():
     if current_user.is_authenticated():
@@ -119,6 +120,7 @@ def index():
         )
 
 
+# preview thread
 @app.route("/preview/<int:thread_id>")
 @login_required
 def preview(thread_id):
@@ -140,6 +142,7 @@ def preview(thread_id):
         abort(404)
 
 
+# edit thread
 @app.route("/edit/<int:thread_id>", methods=['GET', 'POST'])
 @login_required
 def edit(thread_id):
@@ -172,6 +175,7 @@ def edit(thread_id):
         abort(404)
 
 
+# submit thread/success
 @app.route("/success/<int:thread_id>")
 @login_required
 def success(thread_id):
@@ -234,3 +238,17 @@ def success(thread_id):
             )
     else:
         abort(404)
+
+
+# list threads
+@app.route('/latest/', defaults={'pagenum': 1})
+@app.route("/latest/<int:pagenum>")
+def latest_threads(pagenum):
+    threads = db.session.query(Thread)\
+        .filter_by(submitted=True)\
+        .all()
+    return render_template(
+        'latest-threads.html',
+        threads=threads,
+        page_title="Latest AMA's"
+    )
