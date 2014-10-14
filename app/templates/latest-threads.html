@@ -4,10 +4,21 @@
 
     {{super()}}
 
-    {% for thread in threads %}
-    <div class="list-item{% if loop.last %} last{% endif %}">
-        <h3>{{ thread.title }}</h3>
+    {% if threads.items %}
+    <div class="listing">
+        {% for thread in threads.items %}
+        <div class="list-item{% if loop.last %} last{% endif %}">
+            <h3><a href="{{ thread.reddit_permalink }}" target="_blank">{{ thread.title }}</a></h3>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+    <div class="page-nav">
+        {% if threads.has_prev %}<div class="prev"><a href="{{ url_for('latest_threads', pagenum=threads.prev_num) }}">&laquo; Newer posts</a></div>{% endif %}
+        {% if threads.has_next %}<div class="next"><a href="{{ url_for('latest_threads', pagenum=threads.next_num) }}">Older AMA's &raquo;</a></div>{% endif %}
+        <div class="clear"></div>
+    </div>
+    {% else %}
+    <p>Sorry, no AMA's were found. Try viewing the <a href="{{ url_for('latest_threads') }}">latest AMA's</a></p>
+    {% endif %}
 
 {% endblock %}

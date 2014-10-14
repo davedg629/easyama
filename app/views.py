@@ -244,11 +244,11 @@ def success(thread_id):
 @app.route('/latest/', defaults={'pagenum': 1})
 @app.route("/latest/<int:pagenum>")
 def latest_threads(pagenum):
-    threads = db.session.query(Thread)\
+    threads = Thread.query\
         .filter_by(submitted=True)\
-        .all()
+        .paginate(pagenum, 10, False)
     return render_template(
         'latest-threads.html',
         threads=threads,
-        page_title="Latest AMA's"
+        page_title="Latest EasyAMA's"
     )
