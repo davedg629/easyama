@@ -256,3 +256,16 @@ def latest_threads(pagenum):
         threads=threads,
         page_title="Latest AMA's made with easyAMA"
     )
+
+
+@app.route("/user/<int:user_id>")
+@login_required
+def user(user_id):
+    if g.user.id == user_id:
+        return render_template(
+            'user.html',
+            user=g.user,
+            page_title="Your Account"
+        )
+    else:
+        return abort(404)
