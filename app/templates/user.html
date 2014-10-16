@@ -4,6 +4,22 @@
 
     {{super()}}
 
-    <p>{{ user.username }}</p>
+    <p><a class="btn btn-primary btn-lg" href="{{ url_for('create_thread') }}">Start a New AMA</a></p>
+
+    {% if saved_threads %}
+    <p>Or continue with one of your saved AMA's below...</p>
+
+    <div class="divider"></div>
+
+    <div class="listing">
+        {% for thread in saved_threads %}
+        <div class="list-item{% if loop.last %} last{% endif %}">
+            <p class="title"><strong><a href="/preview/{{ thread.id }}">{{ thread.title }}</a></strong></p>
+            <p class="meta">Subreddit: <a href="http://reddit.com/r/{{ thread.subreddit }}" target="_blank">/r/{{ thread.subreddit }}</a></p>
+            <p><a class="btn btn-sm btn-default" href="/preview/{{ thread.id }}">Continue AMA</a></p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
 {% endblock %}

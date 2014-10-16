@@ -83,6 +83,15 @@ def logout():
 # homepage
 @app.route("/")
 def index():
+    if current_user.is_authenticated():
+        saved_threads = db.session.query(Thread)\
+            .filter_by(user_id=g.user.id)\
+            .filter_by(submitted=False)\
+            .first()
+        if saved_threads:
+            return redirect(url_for('user', user_id=g.user.id))
+        else:
+            return redirect(url_for('create_thread'))
     session['oauth_token'] = generate_token()
     oauth_link = r.get_authorize_url(
         session['oauth_token'],
@@ -90,7 +99,7 @@ def index():
         True
     )
     return render_template(
-        'index-anon.html',
+        'index.html',
         page_title="Step 1: Login to your reddit account",
         oauth_link=oauth_link
     )
@@ -262,10 +271,15 @@ def latest_threads(pagenum):
 @login_required
 def user(user_id):
     if g.user.id == user_id:
+        saved_threads = db.session.query(Thread)\
+            .filter_by(user_id=user_id)\
+            .filter_by(submitted=False)\
+            .all()
         return render_template(
             'user.html',
             user=g.user,
-            page_title="Your Account"
+            saved_threads=saved_threads,
+            page_title="My Account"
         )
     else:
         return abort(404)

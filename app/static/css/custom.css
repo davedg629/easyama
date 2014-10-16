@@ -3,6 +3,7 @@ body {font-size: 15px;}
 .small {font-size: 13px;}
 
 .clear {clear: both;}
+.divider {border-top: 1px solid #dddddd; clear: both; margin: 12px 0;}
 
 #main ul li {margin: 0 0 6px;}
 
