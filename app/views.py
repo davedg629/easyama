@@ -63,7 +63,7 @@ def authorize():
             login_user(user)
             flash('Hi ' + user.username + '! You have successfully' +
                   ' logged in with your reddit account.')
-            return redirect(url_for('create_thread'))
+            return redirect(url_for('index'))
         except praw.errors.OAuthException:
             flash('There was a problem with your login. Please try again.')
             return redirect(url_for('index'))
