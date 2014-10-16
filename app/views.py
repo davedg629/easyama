@@ -63,7 +63,7 @@ def authorize():
             login_user(user)
             flash('Hi ' + user.username + '! You have successfully' +
                   ' logged in with your reddit account.')
-            return redirect(url_for('index'))
+            return redirect(url_for('create_thread'))
         except praw.errors.OAuthException:
             flash('There was a problem with your login. Please try again.')
             return redirect(url_for('index'))
@@ -81,43 +81,47 @@ def logout():
 
 
 # homepage
-@app.route("/", methods=['GET', 'POST'])
+@app.route("/")
 def index():
-    if current_user.is_authenticated():
-        form = ThreadForm()
-        if form.validate_on_submit():
-            new_thread = Thread(
-                user_id=g.user.id,
-                title=form.title.data,
-                body=form.body.data,
-                verification=form.verification.data,
-                subreddit=form.subreddit.data,
-            )
-            db.session.add(new_thread)
-            db.session.commit()
+    session['oauth_token'] = generate_token()
+    oauth_link = r.get_authorize_url(
+        session['oauth_token'],
+        ['identity', 'submit'],
+        True
+    )
+    return render_template(
+        'index-anon.html',
+        page_title="Step 1: Login to your reddit account",
+        oauth_link=oauth_link
+    )
 
-            return redirect(url_for(
-                'preview',
-                thread_id=new_thread.id
-            ))
 
-        return render_template(
-            'index.html',
-            page_title="Step 2: Create your reddit AMA",
-            form=form
+# create thread
+@app.route("/create/", methods=['GET', 'POST'])
+@login_required
+def create_thread():
+    form = ThreadForm()
+    if form.validate_on_submit():
+        new_thread = Thread(
+            user_id=g.user.id,
+            title=form.title.data,
+            body=form.body.data,
+            verification=form.verification.data,
+            subreddit=form.subreddit.data,
         )
-    else:
-        session['oauth_token'] = generate_token()
-        oauth_link = r.get_authorize_url(
-            session['oauth_token'],
-            ['identity', 'submit'],
-            True
-        )
-        return render_template(
-            'index-anon.html',
-            page_title="Step 1: Login to your reddit account",
-            oauth_link=oauth_link
-        )
+        db.session.add(new_thread)
+        db.session.commit()
+
+        return redirect(url_for(
+            'preview',
+            thread_id=new_thread.id
+        ))
+
+    return render_template(
+        'create-thread.html',
+        page_title="Step 2: Create your reddit AMA",
+        form=form
+    )
 
 
 # preview thread
