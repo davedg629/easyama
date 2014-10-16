@@ -250,5 +250,5 @@ def latest_threads(pagenum):
     return render_template(
         'latest-threads.html',
         threads=threads,
-        page_title="Latest EasyAMA's"
+        page_title="Latest AMA's made with easyAMA"
     )

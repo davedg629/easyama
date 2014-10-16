@@ -18,6 +18,10 @@ a#login-reddit:hover {background-position: center bottom;}
 
 .page-header {margin-top: 10px;}
 
+/* --- nav bar --- */
+.navbar-nav > li {padding: 14px 0 0;}
+.navbar-default .navbar-nav>li>a {color: #336699; font-weight: bold;}
+
 /* --- form --- */
 form .form-group {margin-bottom: 24px;}
 form label.control-label {font-size: 19px; font-weight: bold; margin-bottom: 0;}
@@ -47,9 +51,11 @@ form textarea.form-control {height: 150px;}
 .modal-title {font-weight: bold; font-size: 19px;}
 
 /* --- listing --- */
-.listing .list-item {padding: 0 0 25px;}
-.listing .list-item.last {padding-bottom: 0;}
-.listing .list-item h3 {margin: 0;}
+.listing .list-item {border-bottom: 1px solid #dddddd; margin: 0 0 16px; padding: 0 0 7px;}
+.listing .list-item.last {border-bottom: 0 none; margin-bottom: 0; padding-bottom: 0;}
+.listing .list-item h3 {font-size: 19px; line-height: 23px; margin: 0 0 3px;}
+.listing .list-item p.meta {font-size: 13px;}
+.listing .list-item p.meta a {color: #336699;}
 
 .page-nav {margin-top: 20px;}
 .page-nav > div {width: 50%;}

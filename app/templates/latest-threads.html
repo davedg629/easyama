@@ -9,6 +9,7 @@
         {% for thread in threads.items %}
         <div class="list-item{% if loop.last %} last{% endif %}">
             <h3><a href="{{ thread.reddit_permalink }}" target="_blank">{{ thread.title }}</a></h3>
+            <p class="meta">Submitted by <a href="http://reddit.com/user/{{ thread.user.username }}" target="_blank">{{ thread.user.username }}</a> to <a href="http://reddit.com/r/{{ thread.subreddit }}" target="_blank">/r/{{ thread.subreddit }}</a></p>
         </div>
         {% endfor %}
     </div>
