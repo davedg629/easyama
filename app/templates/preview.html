@@ -10,6 +10,8 @@
         
         <p class="title">{{ thread.title }}</p>
 
+        <p class="tagline">submitted just now by <a href="#">{{ thread.user.username }}</a> to <a href="#">/r/{{ thread.subreddit }}</a></p>
+
         <div class="md">
             
             {{ thread.body|markdown }}
