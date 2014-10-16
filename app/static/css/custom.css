@@ -18,6 +18,8 @@ a#login-reddit:hover {background-position: center bottom;}
 
 .page-header {margin-top: 10px;}
 
+p {margin-bottom: 12px;}
+
 /* --- nav bar --- */
 .navbar-nav > li {padding: 14px 0 0;}
 .navbar-default .navbar-nav>li>a {color: #336699; font-weight: bold;}
@@ -53,7 +55,7 @@ form textarea.form-control {height: 150px;}
 .modal-title {font-weight: bold; font-size: 19px;}
 
 /* --- listing --- */
-.listing .list-item {border-bottom: 1px solid #dddddd; margin: 0 0 16px; padding: 0 0 7px;}
+.listing .list-item {border-bottom: 1px solid #dddddd; margin: 0 0 16px; padding: 0 0 5px;}
 .listing .list-item.last {border-bottom: 0 none; margin-bottom: 0; padding-bottom: 0;}
 .listing .list-item h3 {font-size: 19px; line-height: 23px; margin: 0 0 3px;}
 .listing .list-item p.meta {font-size: 13px;}
