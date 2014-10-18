@@ -267,12 +267,20 @@ def latest_threads(pagenum):
     )
 
 
-@app.route("/user/<int:user_id>")
+# delete thread
+@app.route('/delete/<int:user_id>')
 @login_required
-def user(user_id):
-    if g.user.id == user_id:
+def delete_thread(user_id):
+    return 'delete thread'
+
+
+# user profile
+@app.route('/user/')
+@login_required
+def user():
+    if current_user.is_authenticated():
         saved_threads = db.session.query(Thread)\
-            .filter_by(user_id=user_id)\
+            .filter_by(user_id=g.user.id)\
             .filter_by(submitted=False)\
             .all()
         return render_template(
