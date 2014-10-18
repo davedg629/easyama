@@ -6,6 +6,7 @@ from app.models import Thread, User
 from flask.ext.login import login_user, logout_user, \
     login_required, current_user
 from app.utils import generate_token, reddit_body
+from sqlalchemy import desc
 import praw
 
 
@@ -302,10 +303,12 @@ def user():
         threads_not_submitted = db.session.query(Thread)\
             .filter_by(user_id=g.user.id)\
             .filter_by(submitted=False)\
+            .order_by(desc(Thread.date_posted))\
             .all()
         threads_submitted = db.session.query(Thread)\
             .filter_by(user_id=g.user.id)\
             .filter_by(submitted=True)\
+            .order_by(desc(Thread.date_posted))\
             .all()
         return render_template(
             'user.html',
