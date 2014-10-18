@@ -6,17 +6,33 @@
 
     <p><a class="btn btn-primary btn-lg" href="{{ url_for('create_thread') }}">Start a New AMA</a></p>
 
-    {% if saved_threads %}
-    <p>Or continue with one of your saved AMA's below...</p>
-
+    {% if threads_not_submitted %}
     <div class="divider"></div>
 
+    <h3>Not Submitted AMA's</h3>
+
     <div class="listing">
-        {% for thread in saved_threads %}
+        {% for thread in threads_not_submitted %}
         <div class="list-item{% if loop.last %} last{% endif %}">
-            <p class="title"><strong><a href="/preview/{{ thread.id }}">{{ thread.title }}</a></strong></p>
+            <p class="title"><strong><a href="{{ url_for('preview', thread_id=thread.id) }}">{{ thread.title }}</a></strong></p>
             <p class="meta">Subreddit: <a href="http://reddit.com/r/{{ thread.subreddit }}" target="_blank">/r/{{ thread.subreddit }}</a></p>
-            <p><a class="btn btn-sm btn-default" href="/preview/{{ thread.id }}">Continue AMA</a></p>
+            <p><a class="btn btn-sm btn-default" href="/preview/{{ thread.id }}">Continue AMA</a> &nbsp; <a class="btn btn-sm btn-danger" href="{{ url_for('delete_thread', thread_id=thread.id) }}">Delete AMA</a></p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if threads_submitted %}
+    <div class="divider"></div>
+
+    <h3>Submitted AMA's</h3>
+
+    <div class="listing">
+        {% for thread in threads_submitted %}
+        <div class="list-item{% if loop.last %} last{% endif %}">
+            <p class="title"><strong><a href="{{ thread.reddit_permalink }}" target="_blank">{{ thread.title }}</a></strong></p>
+            <p class="meta">Subreddit: <a href="http://reddit.com/r/{{ thread.subreddit }}" target="_blank">/r/{{ thread.subreddit }}</a></p>
+            <p><a class="btn btn-sm btn-default" href="{{ thread.reddit_permalink }}" target="_blank">View AMA on reddit</a></p>
         </div>
         {% endfor %}
     </div>

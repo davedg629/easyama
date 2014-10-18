@@ -40,3 +40,8 @@ class ThreadForm(Form):
     )
 
     submit = SubmitField('Preview')
+
+
+# delete thread form
+class DeleteThreadForm(Form):
+    submit = SubmitField('Confirm Delete')

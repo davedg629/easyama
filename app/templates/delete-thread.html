@@ -1,0 +1,17 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+
+    {{super()}}
+
+    <p><strong>Click the button below to delete your AMA. This action cannot be reversed.</strong></p>
+
+    <form method="post" class="form" role="form">
+        
+        {{ form.csrf_token }}
+
+        <input class="btn btn-primary btn-lg" id="submit" name="submit" type="submit" value="Confirm Delete">
+
+    </form>
+
+{% endblock %}

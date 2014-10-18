@@ -1,7 +1,7 @@
 from app import app, db, r
 from flask import flash, redirect, render_template, request, \
     session, url_for, abort, g
-from app.forms import ThreadForm
+from app.forms import ThreadForm, DeleteThreadForm
 from app.models import Thread, User
 from flask.ext.login import login_user, logout_user, \
     login_required, current_user
@@ -89,7 +89,7 @@ def index():
             .filter_by(submitted=False)\
             .first()
         if saved_threads:
-            return redirect(url_for('user', user_id=g.user.id))
+            return redirect(url_for('user'))
         else:
             return redirect(url_for('create_thread'))
     session['oauth_token'] = generate_token()
@@ -268,10 +268,30 @@ def latest_threads(pagenum):
 
 
 # delete thread
-@app.route('/delete/<int:user_id>')
+@app.route('/delete/<int:thread_id>', methods=['GET', 'POST'])
 @login_required
-def delete_thread(user_id):
-    return 'delete thread'
+def delete_thread(thread_id):
+    thread = db.session.query(Thread)\
+        .filter_by(id=thread_id)\
+        .first()
+    if thread and thread.user.id == g.user.id:
+        form = DeleteThreadForm()
+        if form.validate_on_submit():
+            db.session.delete(thread)
+            db.session.commit()
+            flash("Your AMA has been deleted.")
+            return redirect(url_for(
+                'user',
+            ))
+        else:
+            return render_template(
+                'delete-thread.html',
+                thread=thread,
+                form=form,
+                page_title="Delete AMA"
+            )
+    else:
+        return abort(404)
 
 
 # user profile
@@ -279,14 +299,19 @@ def delete_thread(user_id):
 @login_required
 def user():
     if current_user.is_authenticated():
-        saved_threads = db.session.query(Thread)\
+        threads_not_submitted = db.session.query(Thread)\
             .filter_by(user_id=g.user.id)\
             .filter_by(submitted=False)\
+            .all()
+        threads_submitted = db.session.query(Thread)\
+            .filter_by(user_id=g.user.id)\
+            .filter_by(submitted=True)\
             .all()
         return render_template(
             'user.html',
             user=g.user,
-            saved_threads=saved_threads,
+            threads_not_submitted=threads_not_submitted,
+            threads_submitted=threads_submitted,
             page_title="My Account"
         )
     else:
