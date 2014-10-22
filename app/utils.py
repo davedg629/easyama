@@ -21,15 +21,6 @@ def generate_token():
     return urlsafe_b64encode(urandom(30)).rstrip("=")
 
 
-#check if a string is an integer
-def is_number(s):
-    try:
-        int(s)
-        return True
-    except ValueError:
-        return False
-
-
 # turn text into slug
 def make_slug(text, delim=u'-'):
     """Generates a slightly worse ASCII-only slug."""
