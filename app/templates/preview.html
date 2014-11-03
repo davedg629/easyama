@@ -4,7 +4,7 @@
 
     {{super()}}
 
-    <p>Your AMA will be submitted to <strong>r/{{ thread.subreddit }}</strong> and will look like this:</p>
+    <p>Your AMA will be submitted to <strong>r/{{ thread.subreddit }}</strong>.</p>
 
     <div class="reddit-preview">
         
@@ -20,6 +20,10 @@
         
         </div>
 
+    </div>
+
+    <div class="well">
+        <strong>Share Your AMA Preview:</strong> &nbsp; <input type="text" value="http://{{ config.SERVER_NAME }}{{ url_for('share', thread_id=thread.id) }}" />
     </div>
 
     <p><strong>Notice:</strong> Make sure you have proofread your AMA copy before submitting. After submitting, you can edit the body, but not the title.</p>

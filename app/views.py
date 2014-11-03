@@ -156,6 +156,22 @@ def preview(thread_id):
         abort(404)
 
 
+# share thread
+@app.route("/share/<int:thread_id>")
+def share(thread_id):
+    thread = db.session.query(Thread)\
+        .filter_by(id=thread_id)\
+        .first()
+    if thread and thread.submitted is False:
+        return render_template(
+            'share.html',
+            thread=thread,
+            page_title="AMA Preview"
+        )
+    else:
+        abort(404)
+
+
 # edit thread
 @app.route("/edit/<int:thread_id>", methods=['GET', 'POST'])
 @login_required
