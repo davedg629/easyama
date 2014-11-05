@@ -179,7 +179,7 @@ def edit(thread_id):
     thread = db.session.query(Thread)\
         .filter_by(id=thread_id)\
         .first()
-    if thread and thread.user_id is g.user.id and thread.submitted is False:
+    if ((thread and thread.user_id is g.user.id) or (g.user.role_id is 1)) and thread.submitted is False:
         form = ThreadForm(obj=thread)
         if form.validate_on_submit():
             thread.title = form.title.data
