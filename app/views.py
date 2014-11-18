@@ -1,7 +1,7 @@
 from app import app, db, r
 from flask import flash, redirect, render_template, request, \
     session, url_for, abort, g
-from app.forms import ThreadForm, DeleteThreadForm
+from app.forms import ThreadForm, DeleteThreadForm, CaptchaForm
 from app.models import Thread, User
 from flask.ext.login import login_user, logout_user, \
     login_required, current_user
@@ -141,7 +141,8 @@ def preview(thread_id):
     thread = db.session.query(Thread)\
         .filter_by(id=thread_id)\
         .first()
-    if ((thread and thread.user_id is g.user.id) or (g.user.role_id is 1)) and thread.submitted is False:
+    if ((thread and thread.user_id is g.user.id) or (g.user.role_id is 1)) \
+            and thread.submitted is False:
         return render_template(
             'preview.html',
             thread=thread,
@@ -179,7 +180,8 @@ def edit(thread_id):
     thread = db.session.query(Thread)\
         .filter_by(id=thread_id)\
         .first()
-    if ((thread and thread.user_id is g.user.id) or (g.user.role_id is 1)) and thread.submitted is False:
+    if ((thread and thread.user_id is g.user.id) or (g.user.role_id is 1)) \
+            and thread.submitted is False:
         form = ThreadForm(obj=thread)
         if form.validate_on_submit():
             thread.title = form.title.data
@@ -221,22 +223,46 @@ def success(thread_id):
 
             try:
                 r.refresh_access_information(g.user.refresh_token)
-                reddit_post = r.submit(
-                    thread.subreddit,
-                    thread.title,
-                    reddit_body(
-                        thread.body,
-                        thread.verification
+                if request.args.get('captcha_id', '') \
+                        and request.args.get('captcha_response', ''):
+                    captcha = {
+                        'iden': request.args.get('captcha_id', ''),
+                        'captcha': request.args.get('captcha_response', '')
+                    }
+                    reddit_post = r.submit(
+                        thread.subreddit,
+                        thread.title,
+                        reddit_body(
+                            thread.body,
+                            thread.verification
+                        ),
+                        captcha=captcha,
+                        raise_captcha_exception=True
                     )
-                )
+                else:
+                    reddit_post = r.submit(
+                        thread.subreddit,
+                        thread.title,
+                        reddit_body(
+                            thread.body,
+                            thread.verification
+                        ),
+                        raise_captcha_exception=True
+                    )
 
+            except praw.errors.InvalidCaptcha as e:
+                return redirect(url_for(
+                    'captcha',
+                    thread_id=thread.id,
+                    captcha_id=e.response['captcha']
+                ))
             except praw.errors.APIException as e:
                 flash('There was an error with your AMA submission: ' +
-                      e.message)
+                      str(e.message))
 
             except praw.errors.ClientException as e:
                 flash('There was an error with your AMA submission: ' +
-                      e.message)
+                      str(e.message))
 
             except:
                 flash('Sorry, we could not create '
@@ -266,6 +292,31 @@ def success(thread_id):
                 thread=thread,
                 page_title="Your AMA has been submitted!"
             )
+    else:
+        abort(404)
+
+
+# captcha form
+@app.route('/captcha/<int:thread_id>', methods=['GET', 'POST'])
+@login_required
+def captcha(thread_id):
+    thread = db.session.query(Thread)\
+        .filter_by(id=thread_id)\
+        .first()
+    if thread and thread.user_id is g.user.id and thread.submitted is False:
+        form = CaptchaForm()
+        if form.validate_on_submit():
+            return redirect(url_for(
+                'success',
+                thread_id=thread.id,
+                captcha_id=request.args.get('captcha_id', ''),
+                captcha_response=form.captcha_response.data
+            ))
+        return render_template(
+            'captcha.html',
+            form=form,
+            captcha=request.args.get('captcha_id', '')
+        )
     else:
         abort(404)
 

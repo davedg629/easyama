@@ -45,3 +45,14 @@ class ThreadForm(Form):
 # delete thread form
 class DeleteThreadForm(Form):
     submit = SubmitField('Confirm Delete')
+
+
+# captcha form
+class CaptchaForm(Form):
+    captcha_response = TextField(
+        '',
+        validators=[
+            InputRequired()
+        ]
+    )
+    submit = SubmitField('Submit AMA')

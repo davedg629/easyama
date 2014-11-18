@@ -1,0 +1,26 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+
+    {{super()}}
+
+    <p><strong>You must have a new reddit account! That's okay. Just fill in the field below with the characters you see and submit.</strong></p>
+
+    <form method="post" class="form" role="form">
+    
+        {{ form.csrf_token }}
+
+        <div class="form-group"><img src="http://www.reddit.com/captcha/{{ captcha }}.png" alt="This is a captcha with no accessibility for vision impaired, sorry!" /></div>
+
+        <div class="form-group{% if form.captcha_response.errors %} has-error{% endif %}">
+            {{ form.captcha_response.label(class="control-label") }}
+            {{ form.captcha_response(class="form-control", tabindex="1") }}
+            {% if form.captcha_response.errors %}
+                <ul class="errors">{% for error in form.captcha_response.errors %}<li class="text-danger">{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+        <input class="btn btn-primary btn-lg" id="submit" name="submit" type="submit" value="Submit AMA">
+
+    </form>
+
+{% endblock %}
