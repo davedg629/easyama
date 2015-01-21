@@ -1,4 +1,4 @@
-from app import app, db, r
+from app import app, db
 from flask import flash, redirect, render_template, request, \
     session, url_for, abort, g
 from app.forms import ThreadForm, DeleteThreadForm, CaptchaForm
@@ -45,6 +45,12 @@ def authorize():
     if current_user.is_anonymous() and (state == session['oauth_token']):
         try:
             code = request.args.get('code', '')
+            r = praw.Reddit(user_agent=app.config['REDDIT_USER_AGENT'])
+            r.set_oauth_app_info(
+                app.config['REDDIT_APP_ID'],
+                app.config['REDDIT_APP_SECRET'],
+                app.config['OAUTH_REDIRECT_URI']
+            )
             access_info = r.get_access_information(code)
             user_reddit = r.get_me()
             user = db.session.query(User)\
@@ -93,6 +99,12 @@ def index():
             return redirect(url_for('user'))
         else:
             return redirect(url_for('create_thread'))
+    r = praw.Reddit(user_agent=app.config['REDDIT_USER_AGENT'])
+    r.set_oauth_app_info(
+        app.config['REDDIT_APP_ID'],
+        app.config['REDDIT_APP_SECRET'],
+        app.config['OAUTH_REDIRECT_URI']
+    )
     session['oauth_token'] = generate_token()
     oauth_link = r.get_authorize_url(
         session['oauth_token'],
@@ -222,6 +234,12 @@ def success(thread_id):
             reddit_post = None
 
             try:
+                r = praw.Reddit(user_agent=app.config['REDDIT_USER_AGENT'])
+                r.set_oauth_app_info(
+                    app.config['REDDIT_APP_ID'],
+                    app.config['REDDIT_APP_SECRET'],
+                    app.config['OAUTH_REDIRECT_URI']
+                )
                 r.refresh_access_information(g.user.refresh_token)
                 if request.args.get('captcha_id', '') \
                         and request.args.get('captcha_response', ''):
