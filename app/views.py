@@ -52,6 +52,7 @@ def authorize():
                 app.config['OAUTH_REDIRECT_URI']
             )
             access_info = r.get_access_information(code)
+            flash(str(access_info['scope']))
             user_reddit = r.get_me()
             user = db.session.query(User)\
                 .filter_by(username=user_reddit.name)\
@@ -73,6 +74,10 @@ def authorize():
             return redirect(url_for('index'))
         except praw.errors.OAuthException:
             flash('There was a problem with your login. Please try again.')
+            return redirect(url_for('index'))
+        except Exception as e:
+            flash('Sorry, there was an error. Please try again later.')
+            flash(str(e.message))
             return redirect(url_for('index'))
     else:
         return redirect(url_for('index'))
