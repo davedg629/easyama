@@ -21,6 +21,17 @@ a#login-reddit:hover {background-position: center bottom;}
 
 p {margin-bottom: 12px;}
 
+img.bordered-img {border: 2px solid #AAAAAA; border-radius: 4px; -webkit-border-radius: 4px;
+-webkit-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+box-shadow: 3px 3px 3px 0px rgba(0,0,0,0.75);
+display: block;
+height: auto;
+max-width: 96%;
+margin: 25px auto;
+padding: 5px;
+}
+
 /* --- nav bar --- */
 .navbar-nav > li {padding: 0 0 0 0;}
 .navbar-default .navbar-nav>li>a {color: #336699; font-weight: bold;}
