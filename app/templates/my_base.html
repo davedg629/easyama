@@ -51,6 +51,9 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
             <li>
+                <a href="{{ url_for('how_it_works') }}">How It Works</a>
+            </li>
+            <li>
                 <a href="{{ url_for('latest_threads') }}">Latest AMA's</a>
             </li>
             {% if current_user.is_authenticated() %}

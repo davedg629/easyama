@@ -22,8 +22,10 @@ a#login-reddit:hover {background-position: center bottom;}
 p {margin-bottom: 12px;}
 
 /* --- nav bar --- */
-.navbar-nav > li {padding: 14px 0 0;}
+.navbar-nav > li {padding: 0 0 0 0;}
 .navbar-default .navbar-nav>li>a {color: #336699; font-weight: bold;}
+
+.navbar-toggle {margin-top: 15px;}
 
 /* --- form --- */
 form .form-group {margin-bottom: 24px;}
@@ -66,3 +68,7 @@ form textarea.form-control {height: 150px;}
 .page-nav > div {width: 50%;}
 .page-nav > div.prev {float: left;}
 .page-nav > div.next {float: right; text-align: right;}
+
+@media (min-width:768px){
+    .navbar-nav > li {padding: 14px 0 0;}
+}
