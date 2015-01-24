@@ -90,6 +90,15 @@ def logout():
     return redirect(url_for('index'))
 
 
+# how it works
+@app.route("/how-it-works")
+def how_it_works():
+    return render_template(
+        'how-it-works.html',
+        page_title="How It Works"
+    )
+
+
 # homepage
 @app.route("/")
 def index():
