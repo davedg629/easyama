@@ -1,6 +1,5 @@
 from app import db
-from app.models import Role, User, Thread
-from datetime import datetime
+from app.models import Role, User
 
 db.create_all()
 

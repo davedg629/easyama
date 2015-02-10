@@ -134,7 +134,7 @@ def login():
     )
     return render_template(
         'login.html',
-        page_title="Step 1: Login with your reddit account",
+        page_title="Login with your reddit account",
         oauth_link=oauth_link
     )
 
