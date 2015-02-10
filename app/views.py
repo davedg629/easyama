@@ -104,7 +104,7 @@ def how_it_works():
 def index():
     return render_template(
         'index.html',
-        page_title="Ready to create an AMA? Read this first."
+        page_title="Ready to create a reddit AMA? Read this first."
     )
 
 
