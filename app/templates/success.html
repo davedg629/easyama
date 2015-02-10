@@ -4,17 +4,20 @@
 
     {{super()}}
 
-    <p><a href="{{ thread.reddit_permalink }}?sort=new" target="_blank">Click here to view your AMA on reddit</a></p>
+    <p>Now that you have submitted your AMA, you need to monitor the AMA and respond to as many questions as possible.</p>
 
-    <p>Now that you have submitted your AMA, you need to monitor the AMA and respond to as many questions as possible. Click on the above link to open your AMA. Questions will be listed newest to oldest.</p>
+    <p>We suggest that you refresh your AMA every 10 minutes or so to check for new questions. Monitor the thread for at least 2 hours and try to answer as many questions as possible.</p>
 
-    <p>We suggest that you refresh your AMA every 10 minutes or so or whenever you have answered all questions. You should dedicate 1 to 2 hours to answering questions. Return to the thread after 24 hours to answer any questions that were posted.</p>
+    <p>When you are done answering questions, edit your AMA and leave a note to thank the community and let them know you are done answering questions.</p>
 
-    <hr />
+    <p>Return to the thread the next day to answer any questions that were posted since you left the AMA.</p>
 
-    <h3>Share your AMA</h3>
+    <p class="text-center" id="view-ama"><a class="btn btn-primary btn-shadow btn-featured" href="{{ thread.reddit_permalink }}?sort=new" target="_blank">Click here to view your AMA</a></p>
 
-    <p>It is always a good idea ot let your fans know that you are doing an AMA. Click the buttons below to share your AMA on your various social media platforms.</p>
+    <div class="well">
+    <h3 class="well-title">Share your AMA</h3>
+
+    <p>Let your fans know that you are doing an AMA. Click the buttons below to share your AMA on your various social media platforms. <strong>Do not ask your fans to upvote your AMA.</strong></p>
 
     <ul>
         <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ thread.reddit_permalink }}" target="_blank">Share on Facebook</a></li>
@@ -22,8 +25,10 @@
         <li><a href="https://plus.google.com/share?url={{ thread.subreddit }}" target="_blank">Share on Google Plus</a></li>
     </ul>
 
-    <hr />
+    <div class="divider"></div>
 
-    <p>Thanks for using the EasyAMA app. If you need any help with this AMA or engaging other reddit communities in the future, <a href="http://groupsrc.com/contact" >send us a note</a>.</p>
+    <h3>Thank You</h3>
 
+    <p>Thank you for using our application and good luck with your AMA. If you have any feedback, please send us a note using <a href="http://groupsrc.com/contact">this form</a>.</p>
+    </div>
 {% endblock %}

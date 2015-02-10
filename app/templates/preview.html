@@ -4,7 +4,7 @@
 
     {{super()}}
 
-    <p>Your AMA will be submitted to <strong>r/{{ thread.subreddit }}</strong>.</p>
+    <p>Below is what your AMA will look like when it is submitted to <strong>/r/{{ thread.subreddit }}</strong>.</p>
 
     <div class="reddit-preview">
         
@@ -22,14 +22,31 @@
 
     </div>
 
-    <div class="well">
-        <strong>Share Your AMA Preview:</strong> &nbsp; <input type="text" value="http://{{ config.SERVER_NAME }}{{ url_for('share', thread_id=thread.id) }}" />
+    <div id="preview-edit" class="row">
+        <div class="col-sm-3"><p><a class="btn btn-default" href="{{ url_for('edit', thread_id=thread.id) }}">Edit Your AMA</a></p></div>
+        <div class="col-sm-9 text-right"><p><strong>Share this preview:</strong> &nbsp; <input type="text" value="http://{{ config.SERVER_NAME }}{{ url_for('share', thread_id=thread.id) }}" /></p></div>
     </div>
 
-    <p><strong>Notice:</strong> Make sure you have proofread your AMA copy before submitting. After submitting, you can edit the body, but not the title.</p>
+    <div class="divider"></div>
 
-    <p><a class="btn btn-default" href="{{ url_for('edit', thread_id=thread.id) }}">Edit Your AMA</a> <a class="btn btn-primary" href="{{ url_for('success', thread_id=thread.id) }}">Submit Your AMA</a></p>
+    <div class="well"> 
 
-    <p><small><em>If you don't wish to submit your AMA right now, you can come back at anytime, login with the same reddit username, and it will be waiting for you.</em></small></p>
+        <h2 class="well-title">Ready to Submit? Read this first.</h2>
+
+        <p>By clicking the submit button below, you are posting your AMA to the /r/{{ thread.subreddit }} community on reddit. Immediately after submission, you will be given a link to your AMA on reddit.</p>
+
+        <p><strong>A few things before you submit:</strong></p>
+
+        <ul>
+            <li>Your AMA is saved. If you are not ready right now, you can come back at any time to edit, preview, and submit your AMA.</li>
+            <li>Proofread your AMA copy before submitting. After submitting, you will not be able to edit the title of your AMA.</li>
+            <li>You will be expected to answer questions and we recommend that you are available for at least 2 hours to do so. Make sure you are comfortable with the reddit interface before proceeding.</li>
+            <li>There are many factors that determine the success of an AMA. Results are not gauranteed.</li>
+            <li>Please respect the community you are engaging and remember they are human beings.</li>
+        </ul>
+
+        <p class="text-center"><a class="btn btn-primary btn-shadow btn-featured" id="ama-submit-btn" href="{{ url_for('success', thread_id=thread.id) }}">Submit Your AMA</a></p>
+
+    </div>
 
 {% endblock %}

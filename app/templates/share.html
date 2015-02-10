@@ -4,7 +4,7 @@
 
     {{super()}}
 
-    <p>This AMA will be submitted to <strong>r/{{ thread.subreddit }}</strong>.</p>
+    <p>This is an AMA preview created by <strong>/u/{{ thread.user.username }}</strong>. It will be submitted to <strong>/r/{{ thread.subreddit }}</strong>.</p>
 
     <div class="reddit-preview">
         
@@ -20,10 +20,6 @@
         
         </div>
 
-    </div>
-
-    <div class="well">
-        <strong>Share this AMA Preview:</strong> &nbsp; <input type="text" value="http://{{ config.SERVER_NAME }}{{ url_for('share', thread_id=thread.id) }}" />
     </div>
 
 {% endblock %}

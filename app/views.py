@@ -162,7 +162,7 @@ def create_thread():
 
     return render_template(
         'create-thread.html',
-        page_title="Step 2: Create your reddit AMA",
+        page_title="Create your reddit AMA",
         form=form
     )
 
@@ -179,7 +179,7 @@ def preview(thread_id):
         return render_template(
             'preview.html',
             thread=thread,
-            page_title="Step 3: Preview and Submit Your AMA"
+            page_title="Preview Your AMA"
         )
     elif thread.submitted is True:
         return redirect(url_for(
