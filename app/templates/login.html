@@ -1,0 +1,13 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+
+    {{super()}}
+
+    <p>Click the button below to login to easyAMA with your reddit account. This will authorize us to submit posts on your behalf to reddit.</p>
+
+    <p class="small"><strong>We will not have access to your reddit password during this process and we will never post to reddit without your directive.</strong></p>
+
+    <p><a id="login-reddit" href="{{ oauth_link }}"><img src="http://groupsrc.com/easyama/login_reddit.png?ver=3.0" alt="Authorize with reddit" /></a></p>
+
+{% endblock %}
