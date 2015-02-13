@@ -366,6 +366,7 @@ def captcha(thread_id):
 def latest_threads(pagenum):
     threads = Thread.query\
         .filter_by(submitted=True)\
+        .order_by(Thread.date_posted.desc())\
         .paginate(pagenum, 10, False)
     return render_template(
         'latest-threads.html',
