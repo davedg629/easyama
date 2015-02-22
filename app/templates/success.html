@@ -14,7 +14,8 @@
 
     <p class="text-center" id="view-ama"><a class="btn btn-primary btn-shadow btn-featured" href="{{ thread.reddit_permalink }}?sort=new" target="_blank">Click here to view your AMA</a></p>
 
-    <div class="well">
+    <div class="divider"></div>
+
     <h3 class="well-title">Share your AMA</h3>
 
     <p>Let your fans know that you are doing an AMA. Click the buttons below to share your AMA on your various social media platforms. <strong>Do not ask your fans to upvote your AMA.</strong></p>
@@ -25,10 +26,8 @@
         <li><a href="https://plus.google.com/share?url={{ thread.subreddit }}" target="_blank">Share on Google Plus</a></li>
     </ul>
 
-    <div class="divider"></div>
-
-    <h3>Thank You</h3>
-
-    <p>Thank you for using our application and good luck with your AMA. If you have any feedback, please send us a note using <a href="http://goo.gl/forms/XnXnUgkkAB" target="_blank">this form</a>.</p>
+    <div class="well text-center">
+        <strong>Please fill out <a href="http://goo.gl/forms/XnXnUgkkAB" target="_blank">this short survey</a> to help us improve the app.<br />Thank you for using our application and good luck with your AMA.</strong>
     </div>
+
 {% endblock %}
