@@ -1,5 +1,7 @@
 body {font-size: 15px;}
 
+.hide-btn {display: none;}
+
 .small {font-size: 13px;}
 
 .clear {clear: both;}

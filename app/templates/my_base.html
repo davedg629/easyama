@@ -109,3 +109,18 @@
 </div>
 
 {% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script type="text/javascript">
+$(document).ready(function($){
+    $("a.btn-submit").one("click", function() {
+        $(this).css('display', 'none');
+        $(this).next().css('display', 'inline-block');
+    });
+    $("a.btn-loading").click(function(e) {
+        e.preventDefault();
+    });
+});
+</script>
+{% endblock %}

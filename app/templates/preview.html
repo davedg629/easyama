@@ -45,7 +45,10 @@
             <li>Please respect the community you are engaging and remember they are human beings.</li>
         </ul>
 
-        <p class="text-center"><a class="btn btn-primary btn-shadow btn-featured" id="ama-submit-btn" href="{{ url_for('success', thread_id=thread.id) }}">Submit Your AMA</a></p>
+        <p class="text-center">
+            <a class="btn btn-primary btn-shadow btn-featured btn-submit ama-submit-btn" href="{{ url_for('success', thread_id=thread.id) }}">Submit Your AMA</a>
+            <a class="btn btn-primary btn-shadow btn-featured btn-info btn-loading hide-btn" href="#">Loading...</a>
+        </p>
 
     </div>
 
