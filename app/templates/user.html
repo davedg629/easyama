@@ -4,13 +4,13 @@
 
     {{super()}}
 
-    <p><a class="btn btn-primary btn-lg" href="{{ url_for('create_thread') }}">Start a New AMA</a></p>
+    <h2 class="pull-left">My Saved AMAs</h2>
+    
+    <div class="pull-right"><h2><a class="btn btn-primary" href="{{ url_for('create_thread') }}">Create New AMA +</a></h2></div>
 
-    {% if threads_not_submitted %}
     <div class="divider"></div>
 
-    <h3>Not Submitted AMA's</h3>
-
+    {% if threads_not_submitted %}
     <div class="listing">
         {% for thread in threads_not_submitted %}
         <div class="list-item{% if loop.last %} last{% endif %}">
@@ -20,12 +20,14 @@
         </div>
         {% endfor %}
     </div>
+    {% else %}
+    <p>You have no saved AMAs. <a href="{{ url_for('create_thread') }}">Create a new AMA</a>.</p>
     {% endif %}
 
     {% if threads_submitted %}
     <div class="divider"></div>
 
-    <h3>Submitted AMA's</h3>
+    <h3>Submitted AMAs</h3>
 
     <div class="listing">
         {% for thread in threads_submitted %}
