@@ -76,4 +76,4 @@ class Thread(db.Model):
     )
 
     def __unicode__(self):
-        return self.title + ' - ' + str(self.category_id)
+        return self.title + ' - ' + str(self.id)
