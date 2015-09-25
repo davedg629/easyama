@@ -12,7 +12,7 @@ import praw
 
 @app.before_request
 def before_request():
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         g.user = current_user
     else:
         g.user = None
@@ -111,7 +111,7 @@ def index():
 # login page
 @app.route("/login")
 def login():
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         saved_threads = db.session.query(Thread)\
             .filter_by(user_id=g.user.id)\
             .filter_by(submitted=False)\
@@ -406,7 +406,7 @@ def delete_thread(thread_id):
 @app.route('/user/')
 @login_required
 def user():
-    if current_user.is_authenticated():
+    if current_user.is_authenticated:
         threads_not_submitted = db.session.query(Thread)\
             .filter_by(user_id=g.user.id)\
             .filter_by(submitted=False)\
