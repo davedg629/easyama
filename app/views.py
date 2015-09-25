@@ -42,7 +42,7 @@ def internal_error(error):
 @app.route('/authorize/')
 def authorize():
     state = request.args.get('state', '')
-    if current_user.is_anonymous() and (state == session['oauth_token']):
+    if current_user.is_anonymous and (state == session['oauth_token']):
         try:
             code = request.args.get('code', '')
             r = praw.Reddit(user_agent=app.config['REDDIT_USER_AGENT'])
