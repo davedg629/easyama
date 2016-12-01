@@ -51,10 +51,13 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="{{ url_for('latest_threads') }}">Latest AMAs</a>
+            <a href="{{ url_for('about') }}">About Us</a>
             </li>
             <li>
-                <a href="http://marketersguidetoreddit.com/amas" target="_blank">Free AMA Guide</a>
+            <a href="{{ url_for('other_apps') }}">More Reddit Apps</a>
+            </li>
+            <li>
+                <a href="{{ url_for('latest_threads') }}">Latest AMAs</a>
             </li>
             {% if current_user.is_authenticated %}
             <li class="dropdown">

@@ -1,0 +1,24 @@
+{% extends "my_base.html" %}
+
+{% block page_content %}
+{{super()}}
+
+<p>EasyUnsub is one of a few apps created by <a href="{{url_for('about')}}">GroupSRC</a>. We've also created two other apps that make Reddit a little easier to use.</p>
+
+<h2>rDrafts</h2>
+
+<p><a href="http://rdrafts.groupsrc.com" target="_blank">rDrafts</a> is our most popular app. It allows you to create a draft of a Reddit post, preview it, share the preview with others, and then submit it at your convenience (no scheduling though).</p>
+
+<p><a href="http://rdrafts.groupsrc.com" target="_blank">Visit rdrafts.gropusrc.com</a></p>
+
+<hr />
+
+<h2>EasyUnsub</h2>
+
+<p><a href="http://easyunsub.groupsrc.com" target="_blank">EasyUnsub</a> is for redditors that want to quickly unsubscribe from multiple subreddits. A common use-case is when you have created a new account and want to quickly unsubscribe from the default subreddits..</p>
+
+<p><a href="http://easyunsub.groupsrc.com" target="_blank">Visit easyunsub.groupsrc.com</a></p>
+
+{% endblock %}
+
+

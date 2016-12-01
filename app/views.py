@@ -108,6 +108,24 @@ def index():
     )
 
 
+# about
+@app.route("/about/")
+def about():
+    return render_template(
+        'about.html',
+        page_title="About GroupSRC"
+    )
+
+
+# other apps
+@app.route("/other-apps/")
+def other_apps():
+    return render_template(
+        'other-apps.html',
+        page_title="More Reddit Apps"
+    )
+
+
 # login page
 @app.route("/login")
 def login():
